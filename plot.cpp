@@ -3,11 +3,16 @@
 /* Simple ploting engine v0.983 (demo). Using OpenGL 1.1 */
 /*                                                       */
 
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+
 #include <GL/gl.h>
+
 #include "plot.h"
 #include "font.h"
 #include "resource.h"
@@ -143,7 +148,7 @@ static TPlotWindowClass *FindPlotClass(HWND hWnd)
     return PlotWindowClass;             
 }
 
-TPlot3DFunction::TPlot3DFunction(TDouble (*Func)(TDouble, TDouble), TPoint2D &Min, TPoint2D &Max)
+TPlot3DFunction::TPlot3DFunction(TDouble (*Func)(TDouble, TDouble), const TPoint2D &Min, const TPoint2D &Max)
 {
     Function = Func;
     this->Min = Min;
@@ -193,7 +198,7 @@ void TPlot3DFunction::SetGridSize(int SizeX, int SizeY)
     GridSizeY = SizeY;
 }
 
-void TPlot3DFunction::SetFunctionsBounds(TPoint3D &Min, TPoint3D &Max)
+void TPlot3DFunction::SetFunctionsBounds(const TPoint3D &Min, const TPoint3D &Max)
 {
     FunctionsMin = Min;
     FunctionsMax = Max;
@@ -889,7 +894,7 @@ void TPlot3D::ComputeAxesSize()
 
 void TPlot3D::DrawAxis(TDouble Left, TDouble Right, TDouble Epsilon,
                        TPoint3D _Point0, TPoint3D _Point1, 
-                       char *AxisName, int DrawZero)
+                       const char *AxisName, int DrawZero)
 {
     int Line;
     TDouble Value;
@@ -1519,7 +1524,7 @@ void TPlot3D::Render()
         PlotStyle == PLOT3D_STYLE_PATCH_AND_CONTOUR ||
         PlotStyle == PLOT3D_STYLE_PATCH_WITHOUT_GRID)
     {
-        int UsePatchColor;
+        int UsePatchColor = 0;
         int UseGrid = 1;
         int UseContour = 0;
         
@@ -1609,7 +1614,7 @@ void TPlot3D::Render()
     DrawAxes();
 }
 
-void TPlot3D::AttachFunction(TDouble (*Func)(TDouble, TDouble), TPoint2D &Min, TPoint2D &Max)
+void TPlot3D::AttachFunction(TDouble (*Func)(TDouble, TDouble), const TPoint2D &Min, const TPoint2D &Max)
 {
     if (Functions == MaxFunctions) 
     {
@@ -2003,7 +2008,7 @@ void TPlot3D::CreatePlot3DWindow(int winX, int winY,
     
     hWnd = CreateWindowEx(WS_EX_TRANSPARENT, Plot3DClassName,
                         winName,
-                        WS_OVERLAPPED
+                        WS_OVERLAPPED | WS_CHILD
 						/*|
                         WS_CHILD | 
                         WS_CLIPCHILDREN |
@@ -2462,7 +2467,7 @@ int TPlot2D::ComputeAxisPos(TDouble Min, TDouble Max, TDouble AxisSize, int Expa
 void TPlot2D::DrawAxis(TDouble Left, TDouble Middle, TDouble Right, TDouble Epsilon,
                        TDouble Up, TDouble Down,
                        TPoint2D Point0, TPoint2D Point1, 
-                       char *AxisName, int DrawZero, 
+                       const char *AxisName, int DrawZero, 
                        int Direction, int NumbersDist,
                        int AxisStepE, int AxisStepM, TDouble AxisScale)
 {
@@ -2836,7 +2841,7 @@ void TPlot2D::ComputeFunctions()
 
         TPoint2D *Point = PointList;
         int Count = Function->Points;
-        TDouble FuncMin, FuncMax;
+        TDouble FuncMin = 0.0, FuncMax = 0.0;
         TDouble x = Left;
         TDouble Step = (Right - Left) / (Count - 1);
 
@@ -2985,7 +2990,7 @@ void TPlot2D::DrawMesh()
     glPopMatrix();
 }
 
-void TPlot2D::UnionMinMax(TPoint2D &_Min, TPoint2D &_Max)
+void TPlot2D::UnionMinMax(const TPoint2D &_Min, const TPoint2D &_Max)
 {
     if (!InvalidMinMax) 
     {
@@ -3008,21 +3013,21 @@ void TPlot2D::GetMinMax(TPoint2D &_Min, TPoint2D &_Max)
     assert(InvalidMinMax == 0);
     _Min = Min;
     _Max = Max;
-} 
+}
 
-void TPlot2D::SetMinMax(TPoint2D &_Min, TPoint2D &_Max)
+void TPlot2D::SetMinMax(const TPoint2D &_Min, const TPoint2D &_Max)
 {
     Min = _Min;
     Max = _Max;
     InvalidMinMax = 0;
 }
 
-void TPlot2D::StoreState(TPlot2DState &State)
+void TPlot2D::StoreState(const TPlot2DState &State)
 {
     (void) State;
 }
 
-void TPlot2D::LoadState(TPlot2DState &State)
+void TPlot2D::LoadState(const TPlot2DState &State)
 {
     (void) State;
 }

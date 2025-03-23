@@ -44,15 +44,15 @@ public:
     
     ~TPlotFixedFont();
 
-    void GetExtentPoint(char *, int &, int &);
+    void GetExtentPoint(const char *, int &, int &);
 
-    int GetMaxHeight()
+    int GetMaxHeight() const
     {
         return FontHeight;
     }
 
     void Load(unsigned char *);
-    void Print(char *);
+    void Print(const char *);
     void SetColor(TFloat, TFloat, TFloat, TFloat);
     void SetJustify(int, int);
 };

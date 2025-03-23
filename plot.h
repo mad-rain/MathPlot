@@ -133,8 +133,8 @@ class TPlot2D {
 
     int AxisXNumbersDist;
     int AxisYNumbersDist;
-    char *AxisXName;
-    char *AxisYName;
+    const char *AxisXName;
+    const char *AxisYName;
 
     struct {
         TDouble Left;
@@ -188,7 +188,7 @@ class TPlot2D {
     void CreatePlot2DWindow(int, int, int, int, LPSTR);
     void DrawAxes();
     void DrawAxis(TDouble, TDouble, TDouble, TDouble, TDouble, TDouble,
-                  TPoint2D, TPoint2D, char *, int, int, int, 
+                  TPoint2D, TPoint2D, const char *, int, int, int, 
                   int, int, TDouble);
     void DrawMesh();
     void DrawSelection(int, int, int);
@@ -214,9 +214,9 @@ public:
     void EnableZoom(TDouble);
     void Flush();
     void GetMinMax(TPoint2D &, TPoint2D &);
-    void LoadState(TPlot2DState &);
+    void LoadState(const TPlot2DState &);
 
-    void SetAxesNames(char *X, char *Y)
+    void SetAxesNames(const char *X, const char *Y)
     {
         AxisXName = X;
         AxisYName = Y;
@@ -227,9 +227,9 @@ public:
         ConstrainedProjection = Type;
     }
 
-    void SetMinMax(TPoint2D &, TPoint2D &);
-    void StoreState(TPlot2DState &);
-    void UnionMinMax(TPoint2D &, TPoint2D &);
+    void SetMinMax(const TPoint2D &, const TPoint2D &);
+    void StoreState(const TPlot2DState &);
+    void UnionMinMax(const TPoint2D &, const TPoint2D &);
     
     LRESULT WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 };
@@ -271,13 +271,13 @@ public:
 
     TPoint3D Min, Max;
 
-    TPlot3DFunction(TDouble (*)(TDouble, TDouble), TPoint2D &, TPoint2D &);
+    TPlot3DFunction(TDouble (*)(TDouble, TDouble), const TPoint2D &, const TPoint2D &);
     ~TPlot3DFunction();
 
     void BuildMesh(TPoint3D &, int, int);
     void BuildValuesGrid();
     void SetGridSize(int, int);
-    void SetFunctionsBounds(TPoint3D &, TPoint3D &);
+    void SetFunctionsBounds(const TPoint3D &, const TPoint3D &);
 };
 
 struct TPlot3DState {
@@ -306,9 +306,9 @@ class TPlot3D {
     int GridSizeX;
     int GridSizeY;
 
-    char *AxisXName;
-    char *AxisYName;
-    char *AxisZName;
+    const char *AxisXName;
+    const char *AxisYName;
+    const char *AxisZName;
 
     struct {
         TFloat Alpha;
@@ -360,7 +360,7 @@ class TPlot3D {
     void ComputeFunctionValueGrid();
     void ComputeMinMax();
     void DrawAxes();
-    void DrawAxis(TDouble, TDouble, TDouble, TPoint3D, TPoint3D, char *, int);
+    void DrawAxis(TDouble, TDouble, TDouble, TPoint3D, TPoint3D, const char *, int);
     void DrawContour(int);
     void DrawWireframe(int);
     void GetViewportSize(int &, int &);
@@ -381,7 +381,7 @@ public:
     TPlot3D(HINSTANCE, int, int, int, int, char *, HWND = NULL);
     ~TPlot3D();
     
-    void AttachFunction(TDouble (*)(TDouble, TDouble), TPoint2D &, TPoint2D &);
+    void AttachFunction(TDouble (*)(TDouble, TDouble), const TPoint2D &, const TPoint2D &);
     void BuildMesh();
 
     void Display();
@@ -397,7 +397,7 @@ public:
         AxesStyle = _AxesStyle;
     }
 
-    void SetAxesNames(char *X, char *Y, char *Z)
+    void SetAxesNames(const char *X, const char *Y, const char *Z)
     {
         AxisXName = X;
         AxisYName = Y;

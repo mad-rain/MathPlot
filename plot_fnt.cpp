@@ -1,9 +1,11 @@
 
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#include <GL/gl.h>
+
 #include <string.h>
 #include "gfx.h"
 #include "plot_fnt.h"
-#include <GL/gl.h>
-
 
 void TPlotFixedFont::Load(unsigned char *FontStream)
 {
@@ -22,12 +24,12 @@ TPlotFixedFont::~TPlotFixedFont()
     delete FontBitmapList;
 }
 
-void TPlotFixedFont::GetExtentPoint(char *Message, int &Width, int &Height)
+void TPlotFixedFont::GetExtentPoint(const char *Message, int &Width, int &Height)
 {
     Width = 0;
     Height = FontHeight;
     char ch;
-    while (ch = *Message ++)
+    while ((ch = *Message ++))
         Width += FontCharInfoList[ch].Width;
 }
 
@@ -45,10 +47,10 @@ void TPlotFixedFont::SetJustify(int Width, int Height)
     TextJustifyHeight = Height;
 }
 
-void TPlotFixedFont::Print(char *Message)
+void TPlotFixedFont::Print(const char *Message)
 {
     int Width, Height;
-    int WidthShift, HeightShift;
+    int WidthShift = 0, HeightShift = 0;
 
     GetExtentPoint(Message, Width, Height);
 

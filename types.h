@@ -24,7 +24,14 @@ public:
     TDouble x;
     TDouble y;
 
-    TPoint2D()
+    TPoint2D() :
+        x(0.0), y(0.0)
+    {
+    }
+
+    TPoint2D(const TPoint2D&Other) :
+        x(Other.x),
+        y(Other.y)
     {
     }
 
@@ -46,12 +53,12 @@ public:
         y = v[1];
     }
 
-    TPoint2D operator-(TPoint2D p)
+    TPoint2D operator-(const TPoint2D &p)
     {
         return TPoint2D(x - p.x, y - p.y);
     }
 
-    TPoint2D operator+(TPoint2D p)
+    TPoint2D operator+(const TPoint2D &p)
     {
         return TPoint2D(x + p.x, y + p.y);
     }
@@ -71,8 +78,8 @@ public:
         return TPoint2D(-x, -y);
     }
 
-    void Min(TPoint2D &, TPoint2D &);
-    void Max(TPoint2D &, TPoint2D &);
+    void Min(const TPoint2D &, const TPoint2D &);
+    void Max(const TPoint2D &, const TPoint2D &);
 };
 
 class TPoint3D {
@@ -83,7 +90,8 @@ public:
     TDouble y;
     TDouble z;
 
-    TPoint3D()
+    TPoint3D() :
+        x(0.0), y(0.0), z(0.0)
     {
     }
 
@@ -113,17 +121,17 @@ public:
         return TPoint3D(x * Scale, y * Scale, z * Scale);
     }
 
-    TPoint3D operator-(TPoint3D p)
+    TPoint3D operator-(const TPoint3D p)
     {
         return TPoint3D(x - p.x, y - p.y, z - p.z);
     }
 
-    TPoint3D operator+(TPoint3D p)
+    TPoint3D operator+(const TPoint3D p)
     {
         return TPoint3D(x + p.x, y + p.y, z + p.z);
     }
     
-    TPoint3D operator=(TPoint2D &p)
+    TPoint3D operator=(const TPoint2D &p)
     {
         x = p.x;
         y = p.y;
@@ -132,8 +140,8 @@ public:
         return *this;
     }
 
-    void Min(TPoint3D &, TPoint3D &);
-    void Max(TPoint3D &, TPoint3D &);
+    void Min(const TPoint3D &, const TPoint3D &);
+    void Max(const TPoint3D &, const TPoint3D &);
 };
 
 class TBox2D {
@@ -143,14 +151,14 @@ public:
     TPoint2D Min;
     TPoint2D Max;
 
-    TBox2D(TPoint2D &Min, TPoint2D &Max)
+    TBox2D(const TPoint2D &Min, const TPoint2D &Max)
     {
         this->Min = Min;
         this->Max = Max;
     }
     
-    void Intersection(TBox2D &, TBox2D &);
-    void Union(TBox2D &, TBox2D &);
+    void Intersection(const TBox2D &, const TBox2D &);
+    void Union(const TBox2D &, const TBox2D &);
 };
 
 class TBox3D {
@@ -160,13 +168,13 @@ public:
     TPoint3D Min;
     TPoint3D Max;
 
-    TBox3D(TPoint3D &Min, TPoint3D &Max)
+    TBox3D(const TPoint3D &Min, const TPoint3D &Max)
     {
         this->Min = Min;
         this->Max = Max;
     }
     
-    int Inside(TPoint3D &);
+    int Inside(const TPoint3D &);
     void Intersection(TBox3D &, TBox3D &);
     void Union(TBox3D &, TBox3D &);
 };
@@ -180,17 +188,18 @@ public:
     void Rotate(TDouble, TDouble, TDouble);
     void Identity();
     void Transpose();
-    void Translate(TPoint3D &);
+    void Translate(const TPoint3D &);
 
-    TPoint3D operator*(TPoint3D);
-    TMatrix operator*(TMatrix);
+    TPoint3D operator*(const TPoint3D);
+    TMatrix operator*(const TMatrix);
 
     TMatrix(double s[4][4])
     {
         memcpy(m, s, sizeof(TDouble[4][4]));
     }
 
-    TMatrix()
+    TMatrix() :
+        m{}
     {
     }
 };

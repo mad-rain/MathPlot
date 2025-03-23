@@ -3,38 +3,38 @@
 #include "types.h"
 
 
-void TPoint2D::Min(TPoint2D &p0, TPoint2D &p1)
+void TPoint2D::Min(const TPoint2D &p0, const TPoint2D &p1)
 {
     x = min(p0.x, p1.x);
     y = min(p0.y, p1.y);
 }
 
-void TPoint2D::Max(TPoint2D &p0, TPoint2D &p1)
+void TPoint2D::Max(const TPoint2D &p0, const TPoint2D &p1)
 {
     x = max(p0.x, p1.x);
     y = max(p0.y, p1.y);
 }
 
-void TBox2D::Intersection(TBox2D &b0, TBox2D &b1)
+void TBox2D::Intersection(const TBox2D &b0, const TBox2D &b1)
 {
     Min.Max(b0.Min, b1.Min);
     Max.Min(b0.Max, b1.Max);
 }
 
-void TBox2D::Union(TBox2D &b0, TBox2D &b1)
+void TBox2D::Union(const TBox2D &b0, const TBox2D &b1)
 {
     Min.Min(b0.Min, b1.Min);
     Max.Max(b0.Max, b1.Max);
 }
 
-void TPoint3D::Min(TPoint3D &p0, TPoint3D &p1)
+void TPoint3D::Min(const TPoint3D &p0, const TPoint3D &p1)
 {
     x = min(p0.x, p1.x);
     y = min(p0.y, p1.y);
     z = min(p0.z, p1.z);
 }
 
-void TPoint3D::Max(TPoint3D &p0, TPoint3D &p1)
+void TPoint3D::Max(const TPoint3D &p0, const TPoint3D &p1)
 {
     x = max(p0.x, p1.x);
     y = max(p0.y, p1.y);
@@ -53,7 +53,7 @@ void TBox3D::Intersection(TBox3D &b0, TBox3D &b1)
     Max.Min(b0.Max, b1.Max);
 }
 
-int TBox3D::Inside(TPoint3D &p)
+int TBox3D::Inside(const TPoint3D &p)
 {
     return Min.x <= p.x && Max.x >= p.x &&
            Min.y <= p.y && Max.y >= p.y &&
@@ -117,7 +117,7 @@ void TMatrix::Rotate(TDouble x, TDouble y, TDouble z)
     m[3][3] = 1.0;
 }
 
-TPoint3D TMatrix::operator*(TPoint3D p)
+TPoint3D TMatrix::operator*(const TPoint3D p)
 {
     return TPoint3D (m[0][0] * p.x + m[0][1] * p.y + m[0][2] * p.z + m[0][3],
                      m[1][0] * p.x + m[1][1] * p.y + m[1][2] * p.z + m[1][3],
@@ -135,7 +135,7 @@ void TMatrix::Transpose()
         }
 }
 
-void TMatrix::Translate(TPoint3D &p)
+void TMatrix::Translate(const TPoint3D &p)
 {
     m[0][3] -= m[0][0] * p.x + m[0][1] * p.y + m[0][2] * p.z;
     m[1][3] -= m[1][0] * p.x + m[1][1] * p.y + m[1][2] * p.z;
@@ -150,7 +150,7 @@ void TMatrix::Identity()
     m[3][0] = 0.0; m[3][1] = 0.0; m[3][2] = 0.0; m[3][3] = 1.0;
 }
 
-TMatrix TMatrix::operator*(TMatrix s)
+TMatrix TMatrix::operator*(const TMatrix s)
 {
     TDouble d[4][4];
 
