@@ -1,0 +1,55 @@
+# Microsoft Developer Studio Generated Dependency File, included by math.mak
+
+.\extremum.cpp : \
+	".\extremum.h"\
+	".\key_pnt.h"\
+	".\Types.h"\
+	
+
+.\func.cpp : \
+	".\func.h"\
+	
+
+.\key_pnt.cpp : \
+	".\key_pnt.h"\
+	".\Types.h"\
+	
+
+.\main.cpp : \
+	"..\vc\include\basetsd.h"\
+	".\extremum.h"\
+	".\func.h"\
+	".\gfx.h"\
+	".\key_pnt.h"\
+	".\plot.h"\
+	".\plot_fnt.h"\
+	".\Types.h"\
+	
+
+.\plot.cpp : \
+	"..\vc\include\basetsd.h"\
+	"..\vc\include\gl\glext.h"\
+	"..\vc\include\gl\mesa_wgl.h"\
+	".\font.h"\
+	".\gfx.h"\
+	".\plot.h"\
+	".\plot_fnt.h"\
+	".\Types.h"\
+	
+
+.\Plot_fnt.cpp : \
+	"..\vc\include\basetsd.h"\
+	"..\vc\include\gl\glext.h"\
+	"..\vc\include\gl\mesa_wgl.h"\
+	".\gfx.h"\
+	".\plot_fnt.h"\
+	".\Types.h"\
+	
+
+.\Types.cpp : \
+	".\Types.h"\
+	
+
+.\math.rc : \
+	".\afxres.h"\
+	

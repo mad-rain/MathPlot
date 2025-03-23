@@ -1,0 +1,14 @@
+c:\bc\lib\c0w32.obj+
+main.obj+
+extremum.obj+
+key_pnt.obj+
+plot.obj+
+plot_fnt.obj+
+types.obj+
+func.obj
+math.exe
+/Gn/L"c:\bc\lib\"/c/x/aa/Tpe
+import32.lib+
+cw32.lib
+
+math.res

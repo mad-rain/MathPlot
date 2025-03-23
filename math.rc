@@ -1,0 +1,294 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+#ifdef _WIN32
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_MAIN_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 11
+        RIGHTMARGIN, 198
+        VERTGUIDE, 42
+        VERTGUIDE, 85
+        VERTGUIDE, 164
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 188
+        HORZGUIDE, 53
+        HORZGUIDE, 65
+        HORZGUIDE, 78
+        HORZGUIDE, 91
+        HORZGUIDE, 103
+        HORZGUIDE, 116
+    END
+
+    IDD_PLOT_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 340
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 222
+    END
+
+    IDD_POINTS_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 363
+        VERTGUIDE, 177
+        VERTGUIDE, 193
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 138
+        HORZGUIDE, 17
+        HORZGUIDE, 29
+        HORZGUIDE, 114
+    END
+
+    IDD_COEFF_MSGBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 181
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 45
+    END
+
+    IDD_WAIT_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 175
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 35
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MAIN_DIALOG DIALOG DISCARDABLE  0, 0, 209, 195
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Math"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_EDIT_A,85,38,79,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_M,85,54,79,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_K,85,68,79,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_OMEGA,85,83,79,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PHI,85,98,79,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_C1,85,113,79,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_C2,85,128,79,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_T,85,144,79,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "&Дальше",IDC_NEXT,71,174,59,14
+    PUSHBUTTON      "В&ыход",IDC_QUIT,141,174,57,14
+    PUSHBUTTON      "&Вернуться",IDC_BACK,11,174,59,14
+    GROUPBOX        "Коэффициенты",IDC_STATIC,11,22,187,142
+    LTEXT           "A",IDC_STATIC,42,38,43,12,SS_CENTERIMAGE
+    LTEXT           "m",IDC_STATIC,42,54,43,12,SS_CENTERIMAGE
+    LTEXT           "c1",IDC_STATIC,42,113,43,12,SS_CENTERIMAGE
+    LTEXT           "c2",IDC_STATIC,42,128,43,12,SS_CENTERIMAGE
+    LTEXT           "k",IDC_STATIC,42,68,43,12,SS_CENTERIMAGE
+    LTEXT           "w",IDC_STATIC_OMEGA,42,83,43,12,SS_CENTERIMAGE
+    LTEXT           "j",IDC_STATIC_PHI,42,98,43,12,SS_CENTERIMAGE
+    LTEXT           "T",IDC_STATIC,42,144,43,12,SS_CENTERIMAGE
+    LTEXT           "Заполните все поля и нажмите кнопку ""Дальше""",
+                    IDC_STATIC,11,7,187,14
+END
+
+IDD_PLOT_DIALOG DIALOG DISCARDABLE  0, 0, 348, 229
+STYLE DS_CENTER | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_CAPTION | WS_SYSMENU | 
+    WS_THICKFRAME
+CAPTION "Math"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "&Дальше",IDC_NEXT,147,208,59,14
+    PUSHBUTTON      "В&ыход",IDC_QUIT,283,208,57,14
+    PUSHBUTTON      "В н&ачало",IDC_BEGIN,7,208,59,14
+    PUSHBUTTON      "&Назад",IDC_BACK,87,208,59,14
+    CONTROL         "",IDC_PLOT_WINDOW,"Static",SS_BLACKFRAME,7,19,333,179
+    LTEXT           "",IDC_FUNC_NAME,7,7,140,11
+END
+
+IDD_POINTS_DIALOG DIALOG DISCARDABLE  0, 0, 372, 145
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Math"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Точки минимума функции j1(c)",IDC_STATIC,7,5,134,10
+    CONTROL         "",IDC_POINT_LIST_J1,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_NOSORTHEADER | 
+                    WS_BORDER | WS_TABSTOP,7,29,170,85
+    LTEXT           "Точки минимума функции j2(c)",IDC_STATIC,193,5,134,10
+    LTEXT           "Количество: 0",IDC_POINTS_J1,7,17,134,10
+    LTEXT           "Количество: 0",IDC_POINTS_J2,193,17,134,10
+    CONTROL         "",IDC_POINT_LIST_J2,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_NOSORTHEADER | 
+                    WS_BORDER | WS_TABSTOP,193,29,170,85
+    DEFPUSHBUTTON   "В н&ачало",IDC_NEXT,186,124,59,14
+    PUSHBUTTON      "В&ыход",IDC_QUIT,305,124,57,14
+    PUSHBUTTON      "&Назад",IDC_BACK,126,124,59,14
+END
+
+IDD_COEFF_MSGBOX DIALOG DISCARDABLE  0, 0, 188, 52
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,64,31,60,14
+    LTEXT           "",IDC_MSGBOX_TEXT,19,7,150,14,NOT WS_VISIBLE
+END
+
+IDD_WAIT_DIALOG DIALOG DISCARDABLE  0, 0, 182, 42
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP
+FONT 8, "MS Sans Serif"
+BEGIN
+    CTEXT           "Пожалуйста, подождите...",IDC_STATIC,26,14,127,15,
+                    SS_CENTERIMAGE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_PLOT3D_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "PLOT3D"
+    BEGIN
+        POPUP "&Вид"
+        BEGIN
+            MENUITEM "&Связный",                    ID_PLOT3D_STYLE_PATCH
+            MENUITEM "Связный &без Сетки",          ID_PLOT3D_STYLE_PATCH_WITHOUT_GRID
+
+            MENUITEM "Связный c &Уровнями",         ID_PLOT3D_STYLE_PATCH_AND_CONTOUR
+
+            MENUITEM "&Невидимые линии",            ID_PLOT3D_STYLE_HIDDEN_LINE
+
+            MENUITEM "&Линии Уровня",               ID_PLOT3D_STYLE_CONTOUR
+            MENUITEM "&Проволока",                  ID_PLOT3D_STYLE_WIREFRAME
+
+            MENUITEM "&Точки",                      ID_PLOT3D_STYLE_POINT
+        END
+        POPUP "&Оси"
+        BEGIN
+            MENUITEM "&Куб",                        ID_PLOT3D_AXES_BOXED
+            MENUITEM "&Рамка",                      ID_PLOT3D_AXES_FRAMED
+            MENUITEM "&Обычные",                    ID_PLOT3D_AXES_NORMAL
+            MENUITEM "&Нет",                        ID_PLOT3D_AXES_NONE
+        END
+        POPUP "&Проекция"
+        BEGIN
+            MENUITEM "Б&ез Перспективы",            ID_PLOT3D_PROJECTION_NO_PERSPECTIVE
+
+            MENUITEM "&Близкая Перспектива",        ID_PLOT3D_PROJECTION_NEAR_PERSPECTIVE
+
+            MENUITEM "&Средняя Перспектива",        ID_PLOT3D_PROJECTION_MEDIUM_PERSPECTIVE
+
+            MENUITEM "&Далёкая Перспектива",        ID_PLOT3D_PROJECTION_FAR_PERSPECTIVE
+
+            MENUITEM SEPARATOR
+            MENUITEM "&Ограниченная",               ID_PLOT3D_PROJECTION_CONSTRAINED
+
+            MENUITEM "Н&еограниченная",             ID_PLOT3D_PROJECTION_UNCONSTRAINED
+
+        END
+        POPUP "&Цвет"
+        BEGIN
+            MENUITEM "X&YZ",                        ID_PLOT3D_COLOR_XYZ
+            MENUITEM "&XY",                         ID_PLOT3D_COLOR_XY
+            MENUITEM "&Z",                          ID_PLOT3D_COLOR_Z
+            MENUITEM "Z (С&пектр)",                 ID_PLOT3D_COLOR_Z_HUE
+            MENUITEM "Z (&Серый)",                  ID_PLOT3D_COLOR_Z_GRAYSCALE
+
+            MENUITEM "&Без Цвета",                  ID_PLOT3D_COLOR_NO
+            MENUITEM SEPARATOR
+            MENUITEM "&Туман",                      ID_PLOT3D_COLOR_FOG
+        END
+        POPUP "С&вет"
+        BEGIN
+            MENUITEM "&Без Света",                  ID_PLOT3D_LIGHT_NO
+            MENUITEM "Световая Схема &1",           ID_PLOT3D_LIGHT_SCHEME_1
+            MENUITEM "Световая Схема &2",           ID_PLOT3D_LIGHT_SCHEME_2
+            MENUITEM "Световая Схема &3",           ID_PLOT3D_LIGHT_SCHEME_3
+            MENUITEM "Световая Схема &4",           ID_PLOT3D_LIGHT_SCHEME_4
+            MENUITEM SEPARATOR
+            MENUITEM "Обратная &Сторона",           ID_PLOT3D_LIGHT_SIDE
+        END
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON                ICON    DISCARDABLE     "math.ico"
+#endif    // Russian resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
